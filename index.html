@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0b10" />
+    <meta
+      name="description"
+      content="Temukan film favorit dan pesan tiket bioskop dengan mudah bersama Layar."
+    />
+    <title>Layar - Cerita dimulai di sini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Layar beranda"
+        ><span class="brand-mark">L</span>layar<span class="brand-dot">.</span></a
+      >
+      <nav class="nav-links" aria-label="Navigasi utama">
+        <a class="active" href="index.html">Beranda</a><a href="movies.html">Film</a
+        ><a href="index.html#tentang">Tentang</a>
+      </nav>
+      <a class="location" href="movies.html"
+        ><span class="pin"></span> Jakarta, Indonesia <span class="chevron"></span></a
+      >
+      <a class="mobile-ticket" href="booking.html">Pesan tiket <span></span></a>
+    </header>
+
+    <main id="home" data-page="home">
+      <section class="hero" aria-label="Film pilihan">
+        <img
+          class="hero-image"
+          src="Images/scene%20landscape/Odyssey%20Scene%201.jpeg"
+          alt="Pemandangan epik dari film The Odyssey"
+        />
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <div class="eyebrow">
+            <span class="live-dot"></span> PILIHAN MINGGU INI <span class="eyebrow-line"></span>
+          </div>
+          <h1>Cerita besar.<br /><span>Layar yang lebih besar.</span></h1>
+          <p>
+            Petualangan yang tak terlupakan menanti. Rasakan kisahnya, bukan sekadar menontonnya.
+          </p>
+          <div class="hero-actions">
+            <a class="button-primary" href="movies.html">Temukan film <span></span></a
+        <a class="button-quiet" href="movies.html"
+              ><span class="play"></span> Lihat yang sedang tayang</a
+            >
+          </div>
+          <div class="hero-caption">
+            <span class="caption-rule"></span><span>THE ODYSSEY</span
+            ><span class="caption-muted">PETUALANGAN  2026</span>
+          </div>
+        </div>
+        <div class="hero-count"><span>01</span> <i></i> 06</div>
+      </section>
+
+      <section class="movies-section" id="film">
+        <div class="section-heading">
+          <div>
+            <div class="section-kicker"><span></span> PILIHAN UNTUKMU</div>
+            <h2>Film yang sedang <span>tayang</span></h2>
+          </div>
+        <a class="all-link" href="movies.html">Lihat semua film <span></span></a>
+        </div>
+        <div class="filters">
+          <div class="filter-tabs" role="group" aria-label="Filter film">
+            <button class="filter active" data-filter="all">Semua film <span>06</span></button
+            ><button class="filter" data-filter="now">Sedang tayang</button
+            ><button class="filter" data-filter="soon">Segera tayang</button>
+          </div>
+          <div class="schedule">
+            <span class="calendar-icon"></span><span>Jadwal untuk</span
+            ><button id="date-button">Hari ini, 10 Nov <span></span></button>
+          </div>
+        </div>
+        <div class="poster-carousel-wrap">
+          <button class="carousel-arrow carousel-prev" type="button" aria-label="Poster sebelumnya" data-scroll="-1">&larr;</button>
+          <div class="movie-grid poster-carousel" id="daftar-film" tabindex="0" aria-label="Daftar poster film"></div>
+          <button class="carousel-arrow carousel-next" type="button" aria-label="Poster berikutnya" data-scroll="1">&rarr;</button>
+        </div>
+        <div class="trust-row">
+          <span>FILM BAGUS, MALAM YANG LEBIH BAIK.</span>
+          <div><span></span> Pilihan film terkurasi</div>
+          <div><span></span> Pesan mudah, duduk nyaman</div>
+          <div><span></span> Pengalaman layar terbaik</div>
+        </div>
+      </section>
+    </main>
+    <footer id="tentang">
+      <a class="brand" href="#home"
+        ><span class="brand-mark">L</span>layar<span class="brand-dot">.</span></a
+      ><span>Temukan cerita favoritmu di bioskop.</span><div class="social-links" aria-label="Media sosial"><a href="https://instagram.com" aria-label="Instagram"><img src="Images/Icon/instagram%20icon.png" alt="Instagram"></a><a href="https://youtube.com" aria-label="YouTube"><img src="Images/Icon/youtube%20Icon.png" alt="YouTube"></a><a href="https://facebook.com" aria-label="Facebook"><img src="Images/Icon/facebook%20icon.png" alt="Facebook"></a><a href="mailto:halo@layar.id" aria-label="Email"><img src="Images/Icon/gmail%20icon.png" alt="Email"></a></div><span>2026 Layar Cinemas</span>
+    </footer>
+    <script src="site.js"></script>
+  </body>
+</html>
+
+

@@ -1,0 +1,54 @@
+const films = [
+  { id: 'kakak', title: '1 Kakak 7 Ponakan', genre: 'Drama', duration: '1j 55m', rating: '8.2', age: 'SU', status: 'now', poster: 'Images/Film%20Poster/1%20Kakak%207%20Ponakan.jpeg', scenes: ['Images/scene%20landscape/1%20kakak%207%20ponakan%20scene%201.jpeg', 'Images/scene%20landscape/1%20kakak%207%20ponakan%20scene%202.jpeg', 'Images/scene%20landscape/1%20kakak%207%20ponakan%20scene%203.jpeg'], synopsis: 'Kisah tentang keluarga, tanggung jawab, dan ikatan yang tumbuh saat hidup membawa banyak kejutan.' },
+  { id: 'dilan', title: 'Dilan 1990', genre: 'Romansa', duration: '1j 50m', rating: '8.1', age: '13+', status: 'now', poster: 'Images/Film%20Poster/Dilan%201990%20(2018).jpeg', scenes: ['Images/scene%20landscape/Dilan%201990%20scene%201.jpeg', 'Images/scene%20landscape/Dilan%201990%20scene%202.jpeg', 'Images/scene%20landscape/Dilan%201990%20scene%203.jpeg'], synopsis: 'Kisah cinta remaja yang berawal dari pertemuan sederhana dan kata-kata yang sulit dilupakan.' },
+  { id: 'john-wick', title: 'John Wick', genre: 'Action', duration: '1j 41m', rating: '7.9', age: '17+', status: 'now', poster: 'Images/Film%20Poster/John%20Wick.jpeg', scenes: ['Images/scene%20landscape/John%20Wick%20Scene%201.jpeg', 'Images/scene%20landscape/John%20Wick%20Scene%202.jpeg', 'Images/scene%20landscape/John%20Wick%20Scene%203.jpeg'], synopsis: 'Aksi tanpa henti mengikuti seorang mantan pembunuh bayaran dalam perjalanan balas dendamnya.' },
+  { id: 'joker', title: 'Joker', genre: 'Thriller', duration: '2j 2m', rating: '8.4', age: '17+', status: 'now', poster: 'Images/Film%20Poster/Joker%20Movie%20Poster%20__%20PHOTOSHOP.jpeg', scenes: ['Images/scene%20landscape/Joker%20Scene%201.jpeg', 'Images/scene%20landscape/Joker%20Scene%202.jpeg', 'Images/scene%20landscape/Joker%20Scene%203.jpeg'], synopsis: 'Potret psikologis tentang seorang pria kesepian dan kota yang perlahan mendorongnya ke batas.' },
+  { id: 'oppenheimer', title: 'Oppenheimer', genre: 'Drama', duration: '3j', rating: '8.9', age: '17+', status: 'now', poster: 'Images/Film%20Poster/Oppenheimer%20movie%20poster.jpeg', scenes: ['Images/scene%20landscape/Oppenheimer%20Scene%201.jpeg', 'Images/scene%20landscape/Oppenheimer%20Scene%202.jpeg', 'Images/scene%20landscape/Oppenheimer%20Scene%203.jpeg'], synopsis: 'Kisah ilmuwan J. Robert Oppenheimer dan dilema besar di balik terciptanya senjata atom.' },
+  { id: 'odyssey', title: 'The Odyssey', genre: 'Petualangan', duration: '2j 20m', rating: '9.1', age: '13+', status: 'soon', poster: 'Images/Film%20Poster/The%20Odyssey%20(2026)%20%E2%80%93%20Concept%20Movie%20Poster%20Design.jpeg', scenes: ['Images/scene%20landscape/Odyssey%20Scene%201.jpeg', 'Images/scene%20landscape/Odyssey%20Scene%202.jpeg', 'Images/scene%20landscape/Odyssey%20Scene%203.jpeg'], synopsis: 'Sebuah petualangan epik tentang perjalanan pulang yang dipenuhi mitos, badai, dan keberanian.' }
+];
+
+const iconPaths = { instagram: 'Images/Icon/instagram%20icon.png', youtube: 'Images/Icon/youtube%20Icon.png', facebook: 'Images/Icon/facebook%20icon.png', gmail: 'Images/Icon/gmail%20icon.png' };
+const cardMarkup = (film) => `<article class="movie-card" data-status="${film.status}"><a class="poster-wrap" href="film.html?judul=${film.id}" aria-label="Lihat ${film.title}"><img src="${film.poster}" alt="Poster ${film.title}" loading="lazy"><span class="poster-tag ${film.status === 'soon' ? 'upcoming' : ''}">${film.status === 'soon' ? 'SEGERA TAYANG' : 'SEDANG TAYANG'}</span><span class="poster-play">&#9654;</span></a><div class="movie-info"><div class="movie-title-row"><h3>${film.title}</h3><span class="rating">&#9733; ${film.rating}</span></div><div class="movie-meta">${film.genre} &middot; ${film.duration}</div><div class="movie-bottom"><span class="age">${film.age}</span><a href="film.html?judul=${film.id}">Detail film &rarr;</a></div></div></article>`;
+
+function header(active = '') {
+  return `<header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">L</span>layar<span class="brand-dot">.</span></a><nav class="nav-links" aria-label="Navigasi utama"><a class="${active === 'home' ? 'active' : ''}" href="index.html">Beranda</a><a class="${active === 'movies' ? 'active' : ''}" href="movies.html">Film</a><a href="index.html#tentang">Tentang</a></nav><a class="location" href="movies.html"><span class="pin">&#9906;</span> Jakarta, Indonesia <span class="chevron">&#8964;</span></a><a class="mobile-ticket" href="booking.html">Pesan tiket &rarr;</a></header>`;
+}
+
+function footer() {
+  return `<footer id="tentang"><a class="brand" href="index.html"><span class="brand-mark">L</span>layar<span class="brand-dot">.</span></a><span>Temukan cerita favoritmu di bioskop.</span><div class="social-links" aria-label="Media sosial"><a href="https://instagram.com" aria-label="Instagram"><img src="${iconPaths.instagram}" alt="Instagram"></a><a href="https://youtube.com" aria-label="YouTube"><img src="${iconPaths.youtube}" alt="YouTube"></a><a href="https://facebook.com" aria-label="Facebook"><img src="${iconPaths.facebook}" alt="Facebook"></a><a href="mailto:halo@layar.id" aria-label="Email"><img src="${iconPaths.gmail}" alt="Email"></a></div><span>&copy; 2026 Layar Cinemas</span></footer>`;
+}
+
+const app = document.querySelector('[data-page]');
+if (app) {
+  const page = app.dataset.page;
+  if (page === 'home') {
+    const homeGrid = document.querySelector('#daftar-film');
+    if (homeGrid) homeGrid.innerHTML = films.slice(0, 3).map(cardMarkup).join('');
+  }
+  if (page === 'movies') {
+    app.innerHTML = `${header('movies')}<main class="inner-page"><div class="page-heading"><div class="section-kicker"><span></span> KATALOG LAYAR</div><h1>Semua film, satu <span>tempat.</span></h1><p>Pilih cerita favoritmu dan temukan jadwal tayangnya.</p></div><div class="filters"><div class="filter-tabs"><button class="filter active" data-filter="all">Semua film <span>06</span></button><button class="filter" data-filter="now">Sedang tayang</button><button class="filter" data-filter="soon">Segera tayang</button></div></div><div class="movie-grid catalog-grid">${films.map(cardMarkup).join('')}</div><section class="scene-feature"><img src="Images/scene%20landscape/Oppenheimer%20Scene%201.jpeg" alt="Adegan dari Oppenheimer" loading="lazy"><div><span class="section-kicker"><span></span> CERITA DI BALIK LAYAR</span><h2>Setiap film punya dunianya sendiri.</h2><p>Lihat lebih dekat adegan-adegan pilihan dan temukan film yang ingin kamu tonton di layar lebar.</p><a class="button-primary" href="film.html?judul=oppenheimer">Jelajahi film &rarr;</a></div></section></main>${footer()}`;
+  }
+  if (page === 'detail') {
+    const film = films.find((item) => item.id === new URLSearchParams(location.search).get('judul')) || films[0];
+    app.innerHTML = `${header('movies')}<main class="inner-page detail-page"><a class="back-link" href="movies.html">&larr; Kembali ke semua film</a><section class="detail-hero"><img class="detail-poster" src="${film.poster}" alt="Poster ${film.title}"><div class="detail-copy"><div class="section-kicker"><span></span> ${film.status === 'soon' ? 'SEGERA TAYANG' : 'SEDANG TAYANG'}</div><h1>${film.title}</h1><div class="detail-meta"><span>&#9733; ${film.rating}</span><span>${film.genre}</span><span>${film.duration}</span><span>${film.age}</span></div><p>${film.synopsis}</p><a class="button-primary" href="booking.html?film=${film.id}">${film.status === 'soon' ? 'Info jadwal' : 'Pilih jadwal & pesan'} &rarr;</a></div></section><section class="gallery-section"><div class="section-heading"><div><div class="section-kicker"><span></span> INTIP ADEGANNYA</div><h2>Dari dunia <span>${film.title}.</span></h2></div></div><div class="scene-gallery">${film.scenes.map((scene, i) => `<figure><img src="${scene}" alt="Adegan ${i + 1} dari ${film.title}" loading="lazy"><figcaption>ADEGAN 0${i + 1} &middot; ${film.title}</figcaption></figure>`).join('')}</div></section><a class="button-quiet" href="movies.html">Lihat film lainnya &rarr;</a></main>${footer()}`;
+  }
+  if (page === 'booking') {
+    const film = films.find((item) => item.id === new URLSearchParams(location.search).get('film')) || films.find((item) => item.status === 'now');
+    app.innerHTML = `${header('movies')}<main class="inner-page booking-page"><a class="back-link" href="film.html?judul=${film.id}">&larr; Kembali ke detail film</a><div class="page-heading"><div class="section-kicker"><span></span> PESAN TIKET BIOSKOP</div><h1>Satu langkah lagi menuju <span>layar lebar.</span></h1><p>Pilih lokasi, tanggal, dan jam tayang yang cocok.</p></div><form class="booking-card" id="booking-form"><label for="booking-film">Film</label><select id="booking-film" name="film">${films.filter((item) => item.status === 'now').map((item) => `<option value="${item.id}" ${item.id === film.id ? 'selected' : ''}>${item.title}</option>`).join('')}</select><label for="cinema">Bioskop</label><select id="cinema" required><option value="">Pilih bioskop di Jakarta</option><option>LAYAR Grand Indonesia</option><option>LAYAR Plaza Senayan</option><option>LAYAR Kota Kasablanka</option></select><label for="show-date">Tanggal</label><input id="show-date" type="date" required><label for="show-time">Jam tayang</label><select id="show-time" required><option value="">Pilih jam tayang</option><option>13:00</option><option>15:45</option><option>18:30</option><option>21:15</option></select><div class="booking-summary"><span>Harga tiket</span><strong>Rp 50.000 / kursi</strong></div><button class="button-primary" type="submit">Lanjutkan pemesanan &rarr;</button><p class="form-message" id="booking-message" aria-live="polite"></p></form></main>${footer()}`;
+    document.querySelector('#booking-form').addEventListener('submit', (event) => { event.preventDefault(); document.querySelector('#booking-message').textContent = 'Pilihan jadwal tersimpan. Sistem pembayaran belum terhubung.'; });
+  }
+}
+
+const posterCarousel = document.querySelector('.poster-carousel');
+if (posterCarousel) {
+  document.querySelectorAll('[data-scroll]').forEach((button) => {
+    button.addEventListener('click', () => {
+      posterCarousel.scrollBy({ left: button.dataset.scroll * posterCarousel.clientWidth * 0.8, behavior: 'smooth' });
+    });
+  });
+}
+
+document.querySelectorAll('.filter').forEach((button) => button.addEventListener('click', () => {
+  document.querySelectorAll('.filter').forEach((item) => item.classList.toggle('active', item === button));
+  document.querySelectorAll('.movie-card').forEach((card) => { card.hidden = button.dataset.filter !== 'all' && card.dataset.status !== button.dataset.filter; });
+}));
